@@ -59,3 +59,13 @@ class Normal:
 
     def sample(self, size:Optional[Union[int, Tuple[int, ...]]]=None):
         return self.rand.normal(self.mean, self.stdev, size)
+    
+
+
+class Bernoulli:
+    def __init__(self, p:float, seed:Optional[Union[int, SeedSequence]]=None):
+        self.rand = np.random.default_rng(seed)
+        self.p = p
+
+    def sample(self, size:Optional[Union[int, Tuple[int, ...]]]=None):
+        return self.rand.binomial(n=1, p=self.p, size=size)
